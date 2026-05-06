@@ -1,1 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web1 - Sender</title>
+</head>
+<body>
+  <h1>Web1 (Sender)</h1>
 
+  <input id="msg" placeholder="Enter message">
+  <button onclick="send()">Send</button>
+
+  <script>
+    async function send() {
+      const msg = document.getElementById("msg").value;
+
+      await fetch("http://localhost:3000/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg })
+      });
+    }
+  </script>
+</body>
+</html>
