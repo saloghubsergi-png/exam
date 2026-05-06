@@ -1,1 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web2 - Receiver</title>
+</head>
+<body>
+  <h1>Web2 (Receiver)</h1>
 
+  <div id="messages"></div>
+
+  <script>
+    async function loadMessages() {
+      const res = await fetch("http://localhost:3000/messages");
+      const data = await res.json();
+
+      document.getElementById("messages").innerHTML =
+        data.map(m => `<p>${m}</p>`).join("");
+    }
+
+    setInterval(loadMessages, 2000);
+  </script>
+</body>
+</html>
